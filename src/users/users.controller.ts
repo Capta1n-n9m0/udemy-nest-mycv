@@ -1,38 +1,38 @@
-import {Controller, Get, Post, Body, Patch, Param, Query, Delete} from '@nestjs/common';
-import {CreateUserDto} from "./dtos/create-user.dto";
+import { Controller, Get, Post, Body, Patch, Param, Query, Delete } from "@nestjs/common";
+import { CreateUserDto } from "./dtos/create-user.dto";
 
-import {UsersService} from "./users.service";
+import { UsersService } from "./users.service";
 
-@Controller('auth')
+@Controller("auth")
 export class UsersController {
-    constructor(private userService: UsersService) {
-    }
+  constructor(private userService: UsersService) {
+  }
 
-    @Get("/all")
-    allUsers(){
-        return this.userService.findAll();
-    }
+  @Get("/all")
+  allUsers() {
+    return this.userService.findAll();
+  }
 
-    @Post("/signup")
-    createUser(@Body() body: CreateUserDto){
-        this.userService.create(body.email, body.password);
+  @Post("/signup")
+  createUser(@Body() body: CreateUserDto) {
+    this.userService.create(body.email, body.password);
 
-    }
+  }
 
-    @Get("/:id")
-    findUser(@Param("id") id: string){
-        return this.userService.findOne(parseInt(id));
-    }
+  @Get("/:id")
+  findUser(@Param("id") id: string) {
+    return this.userService.findOne(parseInt(id));
+  }
 
-    @Get()
-    findAllUsers(@Query('email') email: string){
-        return this.userService.find(email);
-    }
+  @Get()
+  findAllUsers(@Query("email") email: string) {
+    return this.userService.find(email);
+  }
 
-    @Delete("/:id")
-    removeUser(@Param("id") id :string){
-        return this.userService.remove(parseInt(id));
-    }
+  @Delete("/:id")
+  removeUser(@Param("id") id: string) {
+    return this.userService.remove(parseInt(id));
+  }
 
 
 }

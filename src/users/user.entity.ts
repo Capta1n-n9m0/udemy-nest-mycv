@@ -13,17 +13,17 @@ export class User {
   password: string;
 
   @AfterInsert()
-  logInsert(){
+  logInsert() {
     console.log(`Inserted User with id ${this.id}`);
   }
 
   @AfterUpdate()
-  logUpdate(){
+  logUpdate() {
     console.log(`Updated User with id ${this.id}`);
   }
 
   @BeforeRemove()
-  logRemove(){
+  logRemove() {
     console.log(`Removed User with id ${this.id}`);
   }
 }
